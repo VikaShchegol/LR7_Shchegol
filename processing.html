@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Опрацювання форми</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="logo" src="log.png" alt="Логотип ВмятинОфф">
+            <h1>СТО "ВмятинОфф"</h1>
+        </div>
+        <div class="menu20">
+            <a href="./index.html">Головна</a>
+            <a href="./services.html">Вартість</a>
+            <a href="./examples.html">Приклади робіт</a>
+            <a href="./map.html">Розташування</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Опрацювання форми</h2>
+        <div id="userDetails"></div>
+    </div>
+
+    <footer>
+        <b> Номер телефону:</b> 0000000000 <br />
+        <b> Графік роботи:</b> понеділок-п'ятниця з 9:00-18:00 <br />
+        <b>Адреса:</b> вул.Старокозацька 19, Дніпро, Дніпропетровська область<br />
+        <b>Email: </b> vmyatinoff@gmail.com<br />
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userDetailsDiv = document.getElementById('userDetails');
+            const userData = JSON.parse(localStorage.getItem('userData'));
+
+            if (userData) {
+                userDetailsDiv.innerHTML = `
+                    <h3>Ваші дані опрацьовано:</h3>
+                    <p><b>Ім'я:</b> ${userData.name}</p>
+                    <p><b>Прізвище:</b> ${userData.surname}</p>
+                    <p><b>Вік:</b> ${userData.age}</p>
+                    <p><b>Номер телефону:</b> ${userData.phone}</p>
+                    <p><b>Послуга, яка вас цікавить:</b> ${userData.service}</p>
+                `;
+            } else {
+                userDetailsDiv.innerHTML = `<p>Дані користувача не знайдено.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
